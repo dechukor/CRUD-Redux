@@ -1,16 +1,26 @@
-import React, { memo, FC } from "react";
+import { memo, FC } from "react";
 import { ProductModel } from "../../../product.model";
+import {
+  CardContainer,
+  DescriptionContainer,
+  TitleCard,
+  DescriptionCard,
+  PriceCard,
+  ImageCard,
+} from "./product-card.module";
 
 type ProductCardProps = ProductModel;
 export const ProductCard: FC<ProductCardProps> = memo(
   ({ ...props }: ProductCardProps) => {
     return (
-      <div>
-        <p>{props.title}</p>
-        <img src={props.image} alt={props.title} width={200} height={200} />
-        <p>{props.price}</p>
-        <p>{props.description}</p>
-      </div>
+      <CardContainer>
+        <ImageCard src={props.image} alt={props.title} />
+        <DescriptionContainer>
+          <TitleCard>{props.title}</TitleCard>
+          <DescriptionCard>{props.description}</DescriptionCard>
+        </DescriptionContainer>
+        <PriceCard>{props.price}$</PriceCard>
+      </CardContainer>
     );
   }
 );
