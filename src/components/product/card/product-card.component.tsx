@@ -6,6 +6,7 @@ import {
   TitleCard,
   DescriptionCard,
   PriceCard,
+  ImageContainer,
   ImageCard,
 } from "./product-card.module";
 
@@ -14,7 +15,9 @@ export const ProductCard: FC<ProductCardProps> = memo(
   ({ ...props }: ProductCardProps) => {
     return (
       <CardContainer>
-        <ImageCard src={props.image} alt={props.title} />
+        <ImageContainer>
+          <ImageCard src={props.image} alt={props.title} />
+        </ImageContainer>
         <DescriptionContainer>
           <TitleCard>{props.title}</TitleCard>
           <DescriptionCard>{props.description}</DescriptionCard>
