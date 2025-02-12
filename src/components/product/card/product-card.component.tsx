@@ -1,5 +1,5 @@
 import { memo, FC } from "react";
-import { ProductModel } from "../../../product.model";
+import { ProductModel } from "../../../types/product.model";
 import {
   CardContainer,
   DescriptionContainer,
