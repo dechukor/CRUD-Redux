@@ -1,12 +1,6 @@
-import { ProductCard } from "../components";
+import { ProductList } from "../components";
 import { productListData } from "../data/product.data";
 
 export function App() {
-  return (
-    <>
-      {productListData.map((product) => {
-        return <ProductCard key={product.id} {...product} />;
-      })}
-    </>
-  );
+  return <ProductList productListData={productListData} />;
 }

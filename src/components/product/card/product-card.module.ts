@@ -6,7 +6,7 @@ export const CardContainer = styled("div")`
   gap: 2rem;
   padding: 2rem;
   height: 300px;
-  width: 600px;
+  width: 450px;
   //   border: 2px solid #d5713f;
   border-radius: 1rem;
   background-color: white;
@@ -31,8 +31,10 @@ export const ImageCard = styled("img")`
   object-fit: contain;
 `;
 
-export const TitleCard = styled("h3")`
+export const TitleCard = styled("p")`
   color: #d5713f;
+  font-size: 1.1rem;
+  font-weight: bold;
   text-align: start;
 `;
 
