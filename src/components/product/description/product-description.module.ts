@@ -7,4 +7,10 @@ export const DescriptionCard = styled("div")`
   overflow-wrap: break-word;
 `;
 
-export const ShowHideButton = styled("button")``;
+export const ShowHideButton = styled("button")`
+  background-color: rgb(63, 163, 213, 50%);
+  transition: background-color 0.25s;
+  :hover {
+    background-color: rgb(63, 163, 213, 100%);
+  }
+`;
