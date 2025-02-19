@@ -5,9 +5,8 @@ export const CardContainer = styled("div")`
   justify-content: space-between;
   gap: 2rem;
   padding: 2rem;
-  // height: 300px;
-  width: 450px;
-  //   border: 2px solid #d5713f;
+  width: 30rem;
+  //width: 100%;
   border-radius: 1rem;
   background-color: white;
   box-shadow: 0.5rem 0.5rem 10px grey;
@@ -18,6 +17,7 @@ export const ImageContainer = styled("div")`
   flex-direction: column;
   justify-content: center;
   width: 40%;
+  // width: 10rem;
 `;
 
 export const DescriptionContainer = styled("div")`

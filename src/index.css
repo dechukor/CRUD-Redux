@@ -6,6 +6,7 @@
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
+  font-size: 14px;
 
   color: rgba(255, 255, 255, 0.87);
 
@@ -34,9 +35,8 @@ button {
   border-radius: 6px;
   border: 1px solid transparent;
   padding: 0.2rem 1rem;
-  font-size: 1em;
+  font-size: 0.8rem;
   font-weight: 500;
   font-family: inherit;
   cursor: pointer;
-  width: max-content;
 }

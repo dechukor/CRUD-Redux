@@ -8,6 +8,7 @@ export const DescriptionCard = styled("div")`
 `;
 
 export const ShowHideButton = styled("button")`
+  width: max-content;
   background-color: rgb(63, 163, 213, 50%);
   transition: background-color 0.25s;
   :hover {
