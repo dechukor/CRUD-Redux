@@ -5,7 +5,7 @@ export const CardContainer = styled("div")`
   justify-content: space-between;
   gap: 2rem;
   padding: 2rem;
-  height: 300px;
+  // height: 300px;
   width: 450px;
   //   border: 2px solid #d5713f;
   border-radius: 1rem;
@@ -15,6 +15,8 @@ export const CardContainer = styled("div")`
 
 export const ImageContainer = styled("div")`
   display: flex;
+  flex-direction: column;
+  justify-content: center;
   width: 40%;
 `;
 
@@ -22,27 +24,21 @@ export const DescriptionContainer = styled("div")`
   display: flex;
   flex-direction: column;
   justify-content: start;
+  gap: 0.5rem;
   width: 45%;
 `;
 
 export const ImageCard = styled("img")`
   width: 100%;
-  height: 100%;
+  // height: 100%;
   object-fit: contain;
 `;
 
-export const TitleCard = styled("p")`
+export const TitleCard = styled("div")`
   color: #d5713f;
   font-size: 1.1rem;
   font-weight: bold;
   text-align: start;
-`;
-
-export const DescriptionCard = styled("div")`
-  height: auto;
-  color: black;
-  text-align: start;
-  overflow: hidden;
 `;
 
 export const PriceCard = styled("h3")`
