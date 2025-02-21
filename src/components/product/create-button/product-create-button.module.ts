@@ -1,12 +1,11 @@
 import { styled } from "@mui/material/styles";
 
 export const CreateButton = styled("button")`
-  position: fixed;
   display: flex;
-  pudding: 0;
-  bottom: 50px;
-  right: 50px;
-  background-color: rgb(63, 163, 213);
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  background-color: rgb(63, 163, 213, 70%);
   width: 4rem;
   height: 4rem;
   border-radius: 2rem;
