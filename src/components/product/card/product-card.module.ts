@@ -6,7 +6,6 @@ export const CardContainer = styled("div")`
   gap: 2rem;
   padding: 2rem;
   width: auto;
-
   max-width: 30rem;
   border-radius: 1rem;
   background-color: white;
@@ -31,7 +30,6 @@ export const DescriptionContainer = styled("div")`
 
 export const ImageCard = styled("img")`
   width: 100%;
-  // height: 100%;
   object-fit: contain;
 `;
 
