@@ -10,6 +10,7 @@ import {
   ImageCard,
 } from "./product-card.module";
 import { Description } from "../description";
+import noPhotoImage from "../../../assets/images/noPhoto.png";
 
 type ProductCardProps = ProductModel;
 export const ProductCard: FC<ProductCardProps> = memo(
@@ -17,7 +18,10 @@ export const ProductCard: FC<ProductCardProps> = memo(
     return (
       <CardContainer>
         <ImageContainer>
-          <ImageCard src={props.image} alt={props.title} />
+          <ImageCard
+            src={props.image ? props.image : noPhotoImage}
+            alt={props.title}
+          />
         </ImageContainer>
         <DescriptionContainer>
           <TitleCard>{props.title}</TitleCard>

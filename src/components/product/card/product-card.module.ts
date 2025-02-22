@@ -5,8 +5,9 @@ export const CardContainer = styled("div")`
   justify-content: space-between;
   gap: 2rem;
   padding: 2rem;
-  width: 30rem;
-  //width: 100%;
+  width: auto;
+
+  max-width: 30rem;
   border-radius: 1rem;
   background-color: white;
   box-shadow: 0.5rem 0.5rem 10px grey;

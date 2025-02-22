@@ -15,10 +15,11 @@ export const Substrate = styled("div")`
 export const ModalContainer = styled("div")`
   display: flex;
   flex-direction: column;
+  gap: 2rem;
   padding: 2rem;
   margin: auto;
-  width: 300px;
-  height: 300px;
+  width: 30rem;
+  height: auto;
   border-radius: 1rem;
   background-color: white;
   box-shadow: 0.5rem 0.5rem 10px grey;
@@ -38,5 +39,5 @@ export const ModalChildComponent = styled("div")`
 
 export const ModalTitle = styled("div")`
   font-size: 2rem;
-  color: red;
+  color: #d5713f;
 `;

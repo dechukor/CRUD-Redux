@@ -9,11 +9,13 @@ import {
 import { ModalCloseButton } from "./close-button";
 
 type ModalProps = {
+  title: string;
   visible: boolean;
   onClose: () => void;
   children: ReactNode;
 };
 export const Modal: FC<ModalProps> = ({
+  title,
   visible,
   onClose,
   children,
@@ -24,7 +26,7 @@ export const Modal: FC<ModalProps> = ({
         <Substrate onClick={(e) => e.target === e.currentTarget && onClose()}>
           <ModalContainer>
             <ModalHeader>
-              <ModalTitle>Create product</ModalTitle>
+              <ModalTitle>{title}</ModalTitle>
               <ModalCloseButton onClose={onClose}></ModalCloseButton>
             </ModalHeader>
             <ModalChildComponent>{children}</ModalChildComponent>
