@@ -38,6 +38,13 @@ export const ProductCreationForm: FC<ProductCreationFormProps> = ({
     setFormData({ ...formData, [event.target.id]: event.target.value });
   };
 
+  // const handleChangeInputFile = (
+  //   event: React.ChangeEvent<HTMLInputElement>
+  // ) => {
+  //   if (event.target.files === null) return;
+  //   setFormData({ ...formData, [event.target.id]: event.target.files[0] });
+  // };
+
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     if (!formData.title) {
@@ -95,6 +102,18 @@ export const ProductCreationForm: FC<ProductCreationFormProps> = ({
           type="number"
           innerClassName="inputPriceCreateProduct"
         />
+
+        {/* <Input
+          labelText="Image: "
+          labelForName="image"
+          onChange={handleChangeInputFile}
+          // value={String(formData.price)}
+          id="image"
+          // placeholder="0"
+          type="file"
+          accept=".jpg, .jpeg, .png"
+          // innerClassName="inputPriceCreateProduct"
+        /> */}
       </InputContainer>
       <Button innerClassName="buttonCreateProduct" type="submit">
         Create
