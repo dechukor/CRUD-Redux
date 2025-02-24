@@ -1,0 +1,21 @@
+.buttonBasket {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+}
+
+.buttonBasket_small {
+  width: 3.5rem;
+  height: 3.5rem;
+}
+
+.buttonBasket_big {
+  width: 6rem;
+  height: 6rem;
+}
+
+.productInBasket,
+.productInBasket:hover {
+  background-color: #58d53f;
+}
