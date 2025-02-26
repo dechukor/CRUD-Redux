@@ -35,7 +35,7 @@ export const ProductCreationContainer: FC = () => {
           <ProductCreationForm
             formPurpose="create"
             initialState={initialStateCreateForm}
-            setVisibleModalCreate={setVisibleModalCreate}
+            setVisibleModal={setVisibleModalCreate}
             submitButtonText="Create"
           />
         </Modal>,

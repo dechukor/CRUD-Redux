@@ -15,7 +15,6 @@ export const ProductEditContainer: FC<ProductEditContainer> = ({
   visible,
   setVisible,
 }) => {
-  // const [visibleModalEdit, setVisibleModalEdit] = useState(false);
   const initialStateEditForm: ProductModel = {
     id: product.id,
     title: product.title,
@@ -39,7 +38,7 @@ export const ProductEditContainer: FC<ProductEditContainer> = ({
           <ProductCreationForm
             formPurpose="edit"
             initialState={initialStateEditForm}
-            setVisibleModalCreate={setVisible}
+            setVisibleModal={setVisible}
             submitButtonText="Accept changes"
           />
         </Modal>,

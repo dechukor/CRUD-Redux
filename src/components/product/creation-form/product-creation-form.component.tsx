@@ -14,14 +14,14 @@ import noPhotoImage from "../../../assets/images/noPhoto.png";
 type ProductCreationFormProps = {
   formPurpose: FormPurpose;
   initialState: ProductModel;
-  setVisibleModalCreate: (visibleModalCreate: boolean) => void;
+  setVisibleModal: (visibleModalCreate: boolean) => void;
   submitButtonText: string;
 };
 
 export const ProductCreationForm: FC<ProductCreationFormProps> = ({
   formPurpose,
   initialState,
-  setVisibleModalCreate,
+  setVisibleModal,
   submitButtonText,
 }: ProductCreationFormProps) => {
   const [formData, setFormData] = useState<ProductModel>(initialState);
@@ -56,11 +56,11 @@ export const ProductCreationForm: FC<ProductCreationFormProps> = ({
 
   const editSubmit = (product: ProductModel) => {
     editProductApi(product);
-    setVisibleModalCreate(false);
+    setVisibleModal(false);
   };
   const createSubmit = (product: ProductModel) => {
     createProductApi(product);
-    setVisibleModalCreate(false);
+    setVisibleModal(false);
   };
   const validationForm = (): boolean => {
     if (!formData.title) {
