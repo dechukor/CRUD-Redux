@@ -6,32 +6,25 @@ import {
   InputContainer,
   UploadImageContainer,
 } from "./product-creation-form.module";
-import { ProductModel } from "../../../types";
-import { createProductApi } from "../../../services";
+import { FormPurpose, ProductModel } from "../../../types";
+import { createProductApi, editProductApi } from "../../../services";
 import { TextArea } from "../../textarea";
 import noPhotoImage from "../../../assets/images/noPhoto.png";
 
-type FormCreateType = {
-  title: string;
-  description: string;
-  price: number;
-  image: string;
-};
-
 type ProductCreationFormProps = {
+  formPurpose: FormPurpose;
+  initialState: ProductModel;
   setVisibleModalCreate: (visibleModalCreate: boolean) => void;
+  submitButtonText: string;
 };
 
 export const ProductCreationForm: FC<ProductCreationFormProps> = ({
+  formPurpose,
+  initialState,
   setVisibleModalCreate,
+  submitButtonText,
 }: ProductCreationFormProps) => {
-  const initialState: FormCreateType = {
-    title: "",
-    description: "",
-    price: 0,
-    image: noPhotoImage,
-  };
-  const [formData, setFormData] = useState<FormCreateType>(initialState);
+  const [formData, setFormData] = useState<ProductModel>(initialState);
 
   const handleChangeInput = (event: React.ChangeEvent<HTMLInputElement>) => {
     setFormData({ ...formData, [event.target.id]: event.target.value });
@@ -61,34 +54,46 @@ export const ProductCreationForm: FC<ProductCreationFormProps> = ({
     });
   };
 
-  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
+  const editSubmit = (product: ProductModel) => {
+    editProductApi(product);
+    setVisibleModalCreate(false);
+  };
+  const createSubmit = (product: ProductModel) => {
+    createProductApi(product);
+    setVisibleModalCreate(false);
+  };
+  const validationForm = (): boolean => {
     if (!formData.title) {
       alert("The title is required to fill out!");
-      return;
+      return false;
     }
     if (!formData.price) {
-      if (!confirm("The price is 0. Are you sure?")) return;
+      return confirm("The price is 0. Are you sure?");
     }
 
     if (formData.price < 0) {
       alert("The price cannot be less than 0!");
-      return;
+      return false;
     }
+
+    return true;
+  };
+
+  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    if (!validationForm()) return;
     const newProduct: ProductModel = {
-      id: Date.now(),
+      id: formData.id,
       title: formData.title,
       price: Number(formData.price),
       description: formData.description,
-      category: "",
+      category: formData.category,
       image: formData.image ? formData.image : "",
-      rating: {
-        rate: 0,
-        count: 0,
-      },
+      rating: formData.rating,
     };
-    createProductApi(newProduct);
-    setVisibleModalCreate(false);
+
+    if (formPurpose === "create") createSubmit(newProduct);
+    if (formPurpose === "edit") editSubmit(newProduct);
   };
 
   return (
@@ -139,7 +144,7 @@ export const ProductCreationForm: FC<ProductCreationFormProps> = ({
         </UploadImageContainer>
       </InputContainer>
       <Button innerClassName="buttonCreateProduct" type="submit">
-        Create
+        {submitButtonText}
       </Button>
     </CreateFormContainer>
   );

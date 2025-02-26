@@ -4,6 +4,7 @@ import { BasketModel, ProductModel } from "../types";
 import {
   addProductActions,
   addProductInBasket,
+  editProductActions,
   removeProductFromBasket,
 } from "../store/product/product.slice";
 import { store } from "../store";
@@ -14,6 +15,10 @@ export const fetchProductsApi = (): Promise<AxiosResponse<ProductModel[]>> => {
 
 export const createProductApi = (product: Partial<ProductModel>) => {
   store.dispatch(addProductActions(product));
+};
+
+export const editProductApi = (product: Partial<ProductModel>) => {
+  store.dispatch(editProductActions(product));
 };
 
 export const addBasketApi = (id: BasketModel) => {

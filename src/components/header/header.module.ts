@@ -4,6 +4,7 @@ export const HeaderContainer = styled("header")`
   position: sticky;
   top: 0;
   left 0;
+  z-index: 1;
   box-sizing: border-box;
   width: 100%;
   display: flex;

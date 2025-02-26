@@ -1,4 +1,4 @@
-import { memo, FC } from "react";
+import { memo, FC, useState } from "react";
 import { ProductModel } from "../../../types/product.model";
 import { maxLenghtDescription } from "./product-card.constants";
 import {
@@ -18,11 +18,13 @@ import { useSelector } from "react-redux";
 import { selectBasket } from "../../../store/product";
 import { CURRENCY_UNIT } from "../../../constants/price.constants";
 import { ButtonEdit } from "../../button-edit";
+import { ProductEditContainer } from "../edit-container";
 
 type ProductCardProps = ProductModel;
 export const ProductCard: FC<ProductCardProps> = memo(
   ({ ...props }: ProductCardProps) => {
     const basket = useSelector(selectBasket);
+    const [visibleEditForm, setVisibleEditForm] = useState(false);
     const inBasket = basket.some((item) => item.id === props.id);
 
     const handleBasketClick = () => {
@@ -38,7 +40,14 @@ export const ProductCard: FC<ProductCardProps> = memo(
 
     return (
       <CardContainer>
-        <ButtonEdit />
+        {visibleEditForm && (
+          <ProductEditContainer
+            product={props}
+            visible={visibleEditForm}
+            setVisible={setVisibleEditForm}
+          />
+        )}
+        <ButtonEdit onClick={() => setVisibleEditForm(true)} />
         <ImageContainer>
           <ImageCard
             src={props.image ? props.image : noPhotoImage}

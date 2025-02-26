@@ -17,6 +17,14 @@ export const productSlice = createSlice({
     addProductActions: (state, action) => {
       state.products = [action.payload, ...state.products];
     },
+    editProductActions: (state, action) => {
+      state.products = state.products.map((item) => {
+        if (item.id === action.payload.id) {
+          return action.payload;
+        }
+        return item;
+      });
+    },
     addProductInBasket: (state, action) => {
       state.basket = [action.payload, ...state.basket];
     },
@@ -31,6 +39,7 @@ export const productSlice = createSlice({
 export const {
   setProductsActions,
   addProductActions,
+  editProductActions,
   addProductInBasket,
   removeProductFromBasket,
 } = productSlice.actions;

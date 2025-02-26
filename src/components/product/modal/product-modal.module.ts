@@ -5,6 +5,7 @@ export const Substrate = styled("div")`
   position: fixed;
   top: 0;
   left: 0;
+  z-index: 2;
   background-color: rgb(181, 184, 177, 50%);
   width: 100%;
   height: 100%;

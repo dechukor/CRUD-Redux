@@ -19,6 +19,7 @@ export const ProductListContainer: FC = () => {
           <Header onOpenBasket={() => setVisibleBasket(true)} />
           <ProductList products={products} />
           <ProductCreationContainer />
+
           {visibleBasket && (
             <Basket
               products={products}
