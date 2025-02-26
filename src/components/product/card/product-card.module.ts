@@ -1,6 +1,7 @@
 import { styled } from "@mui/material/styles";
 
 export const CardContainer = styled("div")`
+  position: relative;
   display: flex;
   justify-content: space-between;
   gap: 2rem;

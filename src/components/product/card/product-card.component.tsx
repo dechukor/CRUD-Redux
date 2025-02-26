@@ -17,6 +17,7 @@ import { addBasketApi, removeBasketApi } from "../../../services";
 import { useSelector } from "react-redux";
 import { selectBasket } from "../../../store/product";
 import { CURRENCY_UNIT } from "../../../constants/price.constants";
+import { ButtonEdit } from "../../button-edit";
 
 type ProductCardProps = ProductModel;
 export const ProductCard: FC<ProductCardProps> = memo(
@@ -37,6 +38,7 @@ export const ProductCard: FC<ProductCardProps> = memo(
 
     return (
       <CardContainer>
+        <ButtonEdit />
         <ImageContainer>
           <ImageCard
             src={props.image ? props.image : noPhotoImage}

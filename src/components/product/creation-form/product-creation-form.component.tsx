@@ -2,16 +2,20 @@ import { FC, useState } from "react";
 import { Input, Button } from "../../";
 import {
   CreateFormContainer,
+  ImagePreview,
   InputContainer,
+  UploadImageContainer,
 } from "./product-creation-form.module";
 import { ProductModel } from "../../../types";
 import { createProductApi } from "../../../services";
 import { TextArea } from "../../textarea";
+import noPhotoImage from "../../../assets/images/noPhoto.png";
 
 type FormCreateType = {
   title: string;
   description: string;
   price: number;
+  image: string;
 };
 
 type ProductCreationFormProps = {
@@ -21,11 +25,13 @@ type ProductCreationFormProps = {
 export const ProductCreationForm: FC<ProductCreationFormProps> = ({
   setVisibleModalCreate,
 }: ProductCreationFormProps) => {
-  const [formData, setFormData] = useState<FormCreateType>({
+  const initialState: FormCreateType = {
     title: "",
     description: "",
     price: 0,
-  });
+    image: noPhotoImage,
+  };
+  const [formData, setFormData] = useState<FormCreateType>(initialState);
 
   const handleChangeInput = (event: React.ChangeEvent<HTMLInputElement>) => {
     setFormData({ ...formData, [event.target.id]: event.target.value });
@@ -37,12 +43,23 @@ export const ProductCreationForm: FC<ProductCreationFormProps> = ({
     setFormData({ ...formData, [event.target.id]: event.target.value });
   };
 
-  // const handleChangeInputFile = (
-  //   event: React.ChangeEvent<HTMLInputElement>
-  // ) => {
-  //   if (event.target.files === null) return;
-  //   setFormData({ ...formData, [event.target.id]: event.target.files[0] });
-  // };
+  const handleChangeImageFile = (
+    event: React.ChangeEvent<HTMLInputElement>
+  ) => {
+    if (!event.target.files?.length) {
+      setFormData({
+        ...formData,
+        [event.target.id]: noPhotoImage,
+      });
+      return;
+    }
+    const imageFile = event.target.files[0];
+    console.log(event.target.files);
+    setFormData({
+      ...formData,
+      [event.target.id]: URL.createObjectURL(imageFile),
+    });
+  };
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -64,7 +81,7 @@ export const ProductCreationForm: FC<ProductCreationFormProps> = ({
       price: Number(formData.price),
       description: formData.description,
       category: "",
-      image: "",
+      image: formData.image ? formData.image : "",
       rating: {
         rate: 0,
         count: 0,
@@ -107,18 +124,19 @@ export const ProductCreationForm: FC<ProductCreationFormProps> = ({
           type="number"
           innerClassName="inputPriceCreateProduct"
         />
-
-        {/* <Input
-          labelText="Image: "
-          labelForName="image"
-          onChange={handleChangeInputFile}
-          // value={String(formData.price)}
-          id="image"
-          // placeholder="0"
-          type="file"
-          accept=".jpg, .jpeg, .png"
-          // innerClassName="inputPriceCreateProduct"
-        /> */}
+        <UploadImageContainer>
+          <Input
+            labelText="Image: "
+            labelForName="image"
+            onChange={handleChangeImageFile}
+            id="image"
+            placeholder="Select the file"
+            type="file"
+            accept=".jpg, .jpeg, .png"
+            innerClassName="inputUploadFile"
+          />
+          <ImagePreview src={formData.image} />
+        </UploadImageContainer>
       </InputContainer>
       <Button innerClassName="buttonCreateProduct" type="submit">
         Create

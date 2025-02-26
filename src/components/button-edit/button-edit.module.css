@@ -1,0 +1,26 @@
+.buttonEdit {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  background-color: transparent;
+  padding: 0;
+}
+
+.buttonEdit:hover {
+  background-color: #d87093;
+  transition: 0.2s;
+}
+
+.buttonEdit_small {
+  width: 2.5rem;
+  height: 2.5rem;
+}
+
+.buttonEdit_big {
+  width: 6rem;
+  height: 6rem;
+}

@@ -79,6 +79,10 @@ label {
   width: 40%;
 }
 
+.inputUploadFile {
+  width: 100%;
+}
+
 .buttonCreateProduct {
   background-color: rgb(63, 163, 213, 50%);
   font-size: 1rem;
