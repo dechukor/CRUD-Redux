@@ -40,6 +40,12 @@ export const TitleCard = styled("div")`
   text-align: start;
 `;
 
+export const PriceBasketContainer = styled("div")`
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+`;
+
 export const PriceCard = styled("h3")`
   color: #58d53f;
   text-align: right;
