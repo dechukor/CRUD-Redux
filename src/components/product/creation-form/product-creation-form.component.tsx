@@ -10,6 +10,7 @@ import { FormPurpose, ProductModel } from "../../../types";
 import { createProductApi, editProductApi } from "../../../services";
 import { TextArea } from "../../textarea";
 import noPhotoImage from "../../../assets/images/noPhoto.png";
+import { CURRENCY_UNIT } from "../../../constants/price.constants";
 
 type ProductCreationFormProps = {
   formPurpose: FormPurpose;
@@ -69,6 +70,16 @@ export const ProductCreationForm: FC<ProductCreationFormProps> = ({
     }
     if (!formData.price) {
       return confirm("The price is 0. Are you sure?");
+    }
+
+    if (formData.price > 999.99) {
+      alert(`The price should be no more than ${CURRENCY_UNIT}999.99!`);
+      return false;
+    }
+
+    if (!Number.isInteger(formData.price * 100)) {
+      alert(`The price is not correct!`);
+      return false;
     }
 
     if (formData.price < 0) {
