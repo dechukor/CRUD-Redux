@@ -1,16 +1,18 @@
 import { FC } from "react";
 import style from "./button-basket.module.css";
-import { BasketIcon } from "./basket-icon.component";
+import { BasketEmptyIcon, BasketFillIcon } from "./";
 
 interface ButtonBasketProps
   extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   innerClassName?: string;
-  productInBasket: boolean;
+  productInBasket?: boolean;
+  fill?: boolean;
 }
 
 export const ButtonBasket: FC<ButtonBasketProps> = ({
-  // innerClassName,
+  innerClassName,
   productInBasket,
+  fill = false,
   ...rest
 }: ButtonBasketProps) => {
   return (
@@ -18,10 +20,10 @@ export const ButtonBasket: FC<ButtonBasketProps> = ({
       <button
         className={`${style.buttonBasket} ${style.buttonBasket_small} ${
           productInBasket && style.productInBasket
-        }`}
+        } ${innerClassName && style[innerClassName]}`}
         {...rest}
       >
-        <BasketIcon />
+        {fill ? <BasketFillIcon /> : <BasketEmptyIcon />}
       </button>
     </>
   );

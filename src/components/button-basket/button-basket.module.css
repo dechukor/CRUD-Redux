@@ -19,3 +19,14 @@
 .productInBasket:hover {
   background-color: #58d53f;
 }
+
+.buttonBasketText {
+  background-color: white;
+}
+
+.buttonBasketText:hover {
+  background-color: white;
+  width: 4rem;
+  height: 4rem;
+  transition: 0.2s;
+}

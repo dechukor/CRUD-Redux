@@ -5,7 +5,6 @@ import {
   InputContainer,
 } from "./product-creation-form.module";
 import { ProductModel } from "../../../types";
-import { v4 as uuidv4 } from "uuid";
 import { createProductApi } from "../../../services";
 import { TextArea } from "../../textarea";
 
@@ -54,8 +53,13 @@ export const ProductCreationForm: FC<ProductCreationFormProps> = ({
     if (!formData.price) {
       if (!confirm("The price is 0. Are you sure?")) return;
     }
+
+    if (formData.price < 0) {
+      alert("The price cannot be less than 0!");
+      return;
+    }
     const newProduct: ProductModel = {
-      id: uuidv4(),
+      id: Date.now(),
       title: formData.title,
       price: Number(formData.price),
       description: formData.description,
@@ -69,6 +73,7 @@ export const ProductCreationForm: FC<ProductCreationFormProps> = ({
     createProductApi(newProduct);
     setVisibleModalCreate(false);
   };
+
   return (
     <CreateFormContainer onSubmit={handleSubmit}>
       <InputContainer>

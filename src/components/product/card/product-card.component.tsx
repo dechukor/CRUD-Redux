@@ -1,4 +1,4 @@
-import { memo, FC, useState } from "react";
+import { memo, FC } from "react";
 import { ProductModel } from "../../../types/product.model";
 import { maxLenghtDescription } from "./product-card.constants";
 import {
@@ -13,14 +13,28 @@ import {
 import { Description } from "../description";
 import noPhotoImage from "../../../assets/images/noPhoto.png";
 import { ButtonBasket } from "../../button-basket";
+import { addBasketApi, removeBasketApi } from "../../../services";
+import { useSelector } from "react-redux";
+import { selectBasket } from "../../../store/product";
+import { CURRENCY_UNIT } from "../../../constants/price.constants";
 
 type ProductCardProps = ProductModel;
 export const ProductCard: FC<ProductCardProps> = memo(
   ({ ...props }: ProductCardProps) => {
-    const [inBasket, setInBasket] = useState(false);
+    const basket = useSelector(selectBasket);
+    const inBasket = basket.some((item) => item.id === props.id);
+
     const handleBasketClick = () => {
-      setInBasket((state) => !state);
+      const idProduct = {
+        id: props.id,
+      };
+      if (!inBasket) {
+        addBasketApi(idProduct);
+      } else {
+        removeBasketApi(idProduct);
+      }
     };
+
     return (
       <CardContainer>
         <ImageContainer>
@@ -37,8 +51,12 @@ export const ProductCard: FC<ProductCardProps> = memo(
           />
         </DescriptionContainer>
         <PriceBasketContainer>
-          <PriceCard>{props.price}$</PriceCard>
+          <PriceCard>
+            {CURRENCY_UNIT}
+            {props.price}
+          </PriceCard>
           <ButtonBasket
+            fill={inBasket}
             productInBasket={inBasket}
             onClick={handleBasketClick}
           />

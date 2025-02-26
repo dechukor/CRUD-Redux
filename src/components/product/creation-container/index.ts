@@ -1,1 +1,1 @@
-export * from "./product-creation-container.component";
+export * from "./product-creation.container";

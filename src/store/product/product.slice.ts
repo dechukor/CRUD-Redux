@@ -4,6 +4,7 @@ import { ProductStateModel } from "../../models/state";
 
 const initialState: ProductStateModel = {
   products: [],
+  basket: [],
 };
 
 export const productSlice = createSlice({
@@ -16,8 +17,21 @@ export const productSlice = createSlice({
     addProductActions: (state, action) => {
       state.products = [action.payload, ...state.products];
     },
+    addProductInBasket: (state, action) => {
+      state.basket = [action.payload, ...state.basket];
+    },
+    removeProductFromBasket: (state, action) => {
+      state.basket = state.basket.filter(
+        (item) => item.id !== action.payload.id
+      );
+    },
   },
 });
 
-export const { setProductsActions, addProductActions } = productSlice.actions;
+export const {
+  setProductsActions,
+  addProductActions,
+  addProductInBasket,
+  removeProductFromBasket,
+} = productSlice.actions;
 export default productSlice.reducer;
