@@ -4,13 +4,15 @@ import {
   QuantityProducts,
   ListContainer,
   ListProducts,
-  // Separator,
   SummaryContainer,
   TotalCost,
   EmptyBasketText,
+  ListFooter,
 } from "./basket-list.module";
 import { BasketCard } from "../basket-card";
 import { CURRENCY_UNIT } from "../../../constants/price.constants";
+import { Button } from "../../buttons";
+import { clearBasketApi } from "../../../services";
 
 type BasketListProps = {
   productsInBasket: ProductModel[];
@@ -23,6 +25,12 @@ export const BasketList: FC<BasketListProps> = ({
     .reduce((acc, item) => (acc += item.price), 0)
     .toFixed(2);
 
+  const handleClearClick = () => {
+    if (confirm("Are you sure you want to clean the basket?")) {
+      clearBasketApi();
+    }
+  };
+
   return (
     <ListContainer>
       {productsInBasket.length ? (
@@ -34,15 +42,18 @@ export const BasketList: FC<BasketListProps> = ({
       ) : (
         <EmptyBasketText>Your basket is still empty</EmptyBasketText>
       )}
-
-      {/* <Separator /> */}
-      <SummaryContainer>
-        <QuantityProducts>Quantity: {productsInBasket.length}</QuantityProducts>
-        <TotalCost>
-          Total cost: {CURRENCY_UNIT}
-          {cost}
-        </TotalCost>
-      </SummaryContainer>
+      <ListFooter>
+        <SummaryContainer>
+          <QuantityProducts>
+            Quantity: {productsInBasket.length}
+          </QuantityProducts>
+          <TotalCost>
+            Total cost: {CURRENCY_UNIT}
+            {cost}
+          </TotalCost>
+        </SummaryContainer>
+        <Button onClick={handleClearClick}>Clear basket</Button>
+      </ListFooter>
     </ListContainer>
   );
 };

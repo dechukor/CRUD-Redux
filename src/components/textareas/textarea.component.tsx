@@ -1,5 +1,5 @@
 import { FC } from "react";
-import { Label } from "../label";
+import { Label } from "../labels";
 interface TextAreaProps
   extends React.TextareaHTMLAttributes<HTMLTextAreaElement> {
   labelText?: string;

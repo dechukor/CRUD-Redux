@@ -4,9 +4,10 @@ import { ProductModel } from "../types";
 import {
   addProductActions,
   removeProductActions,
-  addProductInBasket,
+  addProductInBasketActions,
   editProductActions,
-  removeProductFromBasket,
+  removeProductFromBasketActions,
+  clearBasketActions,
 } from "../store/product/product.slice";
 import { store } from "../store";
 
@@ -27,9 +28,12 @@ export const removeProductApi = (id: number) => {
 };
 
 export const addBasketApi = (id: number) => {
-  store.dispatch(addProductInBasket(id));
+  store.dispatch(addProductInBasketActions(id));
 };
 
 export const removeBasketApi = (id: number) => {
-  store.dispatch(removeProductFromBasket(id));
+  store.dispatch(removeProductFromBasketActions(id));
+};
+export const clearBasketApi = () => {
+  store.dispatch(clearBasketActions());
 };

@@ -17,7 +17,7 @@ import {
   BasketCheckMarkIcon,
   BasketPlusIcon,
   ButtonBasket,
-} from "../../button-basket";
+} from "../../buttons/button-basket";
 import {
   addBasketApi,
   removeBasketApi,
@@ -26,9 +26,9 @@ import {
 import { useSelector } from "react-redux";
 import { selectBasket } from "../../../store/product";
 import { CURRENCY_UNIT } from "../../../constants/price.constants";
-import { ButtonEdit } from "../../button-edit";
+import { ButtonEdit } from "../../buttons/button-edit";
 import { ProductEditContainer } from "../edit-container";
-import { ButtonRemove, RemoveIcon } from "../../button-remove";
+import { ButtonRemove, RemoveIcon } from "../../buttons/button-remove";
 
 type ProductCardProps = ProductModel;
 export const ProductCard: FC<ProductCardProps> = memo(

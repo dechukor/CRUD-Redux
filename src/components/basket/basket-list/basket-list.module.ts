@@ -20,17 +20,19 @@ export const ListProducts = styled("div")`
   overflow: auto;
 `;
 
-export const Separator = styled("hr")`
-  width: 80%;
+export const ListFooter = styled("div")`
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1rem;
+  border-top: 2px solid grey;
+  padding: 1rem 1rem 0 1rem;
 `;
 
 export const SummaryContainer = styled("div")`
   display: flex;
-  justify-content: center;
   flex-wrap: wrap;
   gap: 1rem;
-  border-top: 2px solid grey;
-  padding-top: 1rem;
 `;
 
 export const QuantityProducts = styled("div")`

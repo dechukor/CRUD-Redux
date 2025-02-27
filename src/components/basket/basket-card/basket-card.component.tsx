@@ -8,10 +8,10 @@ import {
   PriceCard,
   SettingsContainer,
 } from "./basket.card.module";
-import { ButtonRemove } from "../../button-remove";
+import { ButtonRemove } from "../../buttons/button-remove";
 import { removeBasketApi } from "../../../services";
 import { CURRENCY_UNIT } from "../../../constants/price.constants";
-import { BasketMinusIcon } from "../../button-basket";
+import { BasketMinusIcon } from "../../buttons/button-basket";
 
 type BasketCardProps = {
   product: ProductModel;

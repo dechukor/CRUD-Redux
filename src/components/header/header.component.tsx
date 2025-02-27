@@ -10,7 +10,7 @@ import {
   BasketEmptyIcon,
   BasketFillIcon,
   ButtonBasket,
-} from "../button-basket";
+} from "../buttons/button-basket";
 import { useSelector } from "react-redux";
 import { selectBasket } from "../../store/product";
 

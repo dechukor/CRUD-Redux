@@ -1,5 +1,5 @@
 import { FC } from "react";
-import { Label } from "../label";
+import { Label } from "../labels";
 
 interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
   labelText?: string;

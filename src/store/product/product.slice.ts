@@ -30,14 +30,17 @@ export const productSlice = createSlice({
         (item) => item.id !== action.payload
       );
     },
-    addProductInBasket: (state, action) => {
+    addProductInBasketActions: (state, action) => {
       const newItem: BasketModel = {
         id: action.payload,
       };
       state.basket = [newItem, ...state.basket];
     },
-    removeProductFromBasket: (state, action) => {
+    removeProductFromBasketActions: (state, action) => {
       state.basket = state.basket.filter((item) => item.id !== action.payload);
+    },
+    clearBasketActions: (state) => {
+      state.basket = [];
     },
   },
 });
@@ -47,7 +50,8 @@ export const {
   addProductActions,
   editProductActions,
   removeProductActions,
-  addProductInBasket,
-  removeProductFromBasket,
+  addProductInBasketActions,
+  removeProductFromBasketActions,
+  clearBasketActions,
 } = productSlice.actions;
 export default productSlice.reducer;

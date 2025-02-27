@@ -7,7 +7,7 @@ import {
   UploadImageContainer,
 } from "./product-creation-form.module";
 import { FormPurpose, ProductModel } from "../../../types";
-import { TextArea } from "../../textarea";
+import { TextArea } from "../../textareas";
 import noPhotoImage from "../../../assets/images/noPhoto.png";
 import { validationForm } from "./product-creation-form.validation";
 import { createSubmit, editSubmit } from "./product-creation-form.submit";

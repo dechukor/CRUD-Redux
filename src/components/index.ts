@@ -1,3 +1,3 @@
 export * from "./product";
-export * from "./button";
-export * from "./input";
+export * from "./buttons";
+export * from "./inputs";
