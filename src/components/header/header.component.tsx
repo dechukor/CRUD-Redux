@@ -6,7 +6,11 @@ import {
   BasketCounter,
 } from "./header.module";
 import imageLogo from "../../../src/assets/images/logo.png";
-import { ButtonBasket } from "../button-basket";
+import {
+  BasketEmptyIcon,
+  BasketFillIcon,
+  ButtonBasket,
+} from "../button-basket";
 import { useSelector } from "react-redux";
 import { selectBasket } from "../../store/product";
 
@@ -23,10 +27,12 @@ export const Header: FC<HeaderProps> = ({ onOpenBasket }: HeaderProps) => {
       <HeaderLogo src={imageLogo} alt="Product shop logo" />
       <ButtonContainer>
         <ButtonBasket
-          fill={!!counterInBasket}
+          // fill={!!counterInBasket}
           onClick={onOpenBasket}
           innerClassName="buttonBasketText"
-        />
+        >
+          {counterInBasket ? <BasketFillIcon /> : <BasketEmptyIcon />}
+        </ButtonBasket>
         <BasketCounter>{counterInBasket}</BasketCounter>
       </ButtonContainer>
     </HeaderContainer>

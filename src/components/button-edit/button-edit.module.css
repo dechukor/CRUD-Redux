@@ -1,7 +1,4 @@
 .buttonEdit {
-  position: absolute;
-  top: 1rem;
-  left: 1rem;
   display: flex;
   justify-content: center;
   align-items: center;

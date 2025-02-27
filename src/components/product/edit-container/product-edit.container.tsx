@@ -15,18 +15,6 @@ export const ProductEditContainer: FC<ProductEditContainer> = ({
   visible,
   setVisible,
 }) => {
-  const initialStateEditForm: ProductModel = {
-    id: product.id,
-    title: product.title,
-    description: product.description,
-    price: product.price,
-    category: "",
-    image: product.image,
-    rating: {
-      rate: 0,
-      count: 0,
-    },
-  };
   return (
     <>
       {createPortal(
@@ -37,7 +25,7 @@ export const ProductEditContainer: FC<ProductEditContainer> = ({
         >
           <ProductCreationForm
             formPurpose="edit"
-            initialState={initialStateEditForm}
+            initialState={product}
             setVisibleModal={setVisible}
             submitButtonText="Accept changes"
           />

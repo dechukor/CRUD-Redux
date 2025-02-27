@@ -1,6 +1,5 @@
 import { FC } from "react";
 import style from "./button-remove.module.css";
-import { RemoveIcon } from "./remove-icon";
 
 interface ButtonRemoveProps
   extends React.ButtonHTMLAttributes<HTMLButtonElement> {
@@ -9,6 +8,7 @@ interface ButtonRemoveProps
 
 export const ButtonRemove: FC<ButtonRemoveProps> = ({
   innerClassName,
+  children,
   ...rest
 }: ButtonRemoveProps) => {
   return (
@@ -19,7 +19,7 @@ export const ButtonRemove: FC<ButtonRemoveProps> = ({
         }`}
         {...rest}
       >
-        <RemoveIcon />
+        {children}
       </button>
     </>
   );

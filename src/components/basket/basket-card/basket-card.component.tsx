@@ -6,10 +6,12 @@ import {
   ImageCard,
   TitleCard,
   PriceCard,
+  SettingsContainer,
 } from "./basket.card.module";
 import { ButtonRemove } from "../../button-remove";
 import { removeBasketApi } from "../../../services";
 import { CURRENCY_UNIT } from "../../../constants/price.constants";
+import { BasketMinusIcon } from "../../button-basket";
 
 type BasketCardProps = {
   product: ProductModel;
@@ -19,12 +21,22 @@ export const BasketCard: FC<BasketCardProps> = ({
   product,
 }: BasketCardProps) => {
   const handleClickRemove = () => {
-    removeBasketApi({ id: product.id });
+    if (
+      confirm(
+        `Are you sure you go to remove the product of the "${product.title}" from the basket?`
+      )
+    ) {
+      removeBasketApi(product.id);
+    }
   };
 
   return (
     <CardContainer>
-      <ButtonRemove onClick={handleClickRemove} />
+      <SettingsContainer>
+        <ButtonRemove onClick={handleClickRemove}>
+          <BasketMinusIcon size="1.5rem" />
+        </ButtonRemove>
+      </SettingsContainer>
       <ImageCard
         alt={product.title}
         src={product.image ? product.image : noPhotoImage}

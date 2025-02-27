@@ -19,6 +19,7 @@ export const ProductCreationContainer: FC = () => {
       rate: 0,
       count: 0,
     },
+    creatorName: "user",
   };
   return (
     <>

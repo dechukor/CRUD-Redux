@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { ProductStateModel } from "../../models/state";
-// import { ProductModel } from "../../types";
+import { BasketModel } from "../../types";
 
 const initialState: ProductStateModel = {
   products: [],
@@ -25,13 +25,19 @@ export const productSlice = createSlice({
         return item;
       });
     },
+    removeProductActions: (state, action) => {
+      state.products = state.products.filter(
+        (item) => item.id !== action.payload
+      );
+    },
     addProductInBasket: (state, action) => {
-      state.basket = [action.payload, ...state.basket];
+      const newItem: BasketModel = {
+        id: action.payload,
+      };
+      state.basket = [newItem, ...state.basket];
     },
     removeProductFromBasket: (state, action) => {
-      state.basket = state.basket.filter(
-        (item) => item.id !== action.payload.id
-      );
+      state.basket = state.basket.filter((item) => item.id !== action.payload);
     },
   },
 });
@@ -40,6 +46,7 @@ export const {
   setProductsActions,
   addProductActions,
   editProductActions,
+  removeProductActions,
   addProductInBasket,
   removeProductFromBasket,
 } = productSlice.actions;

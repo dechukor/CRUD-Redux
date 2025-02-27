@@ -1,12 +1,14 @@
-export const RemoveIcon = () => {
-  return (
-    // <></>mui icins
+type RemoveIconProps = {
+  size?: string;
+};
 
+export const RemoveIcon = ({ size = "1.4rem" }: RemoveIconProps) => {
+  return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 12 12"
-      width="1.1rem"
-      height="1.1rem"
+      width={size}
+      height={size}
     >
       <path
         fill="none"

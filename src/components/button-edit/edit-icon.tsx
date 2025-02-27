@@ -1,10 +1,14 @@
-export function EditIcon() {
+type EditIconProps = {
+  size?: string;
+};
+
+export const EditIcon = ({ size = "1.5rem" }: EditIconProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
-      width="1.5rem"
-      height="1.5rem"
+      width={size}
+      height={size}
     >
       <g
         fill="none"
@@ -18,4 +22,4 @@ export function EditIcon() {
       </g>
     </svg>
   );
-}
+};

@@ -7,10 +7,10 @@ import {
   UploadImageContainer,
 } from "./product-creation-form.module";
 import { FormPurpose, ProductModel } from "../../../types";
-import { createProductApi, editProductApi } from "../../../services";
 import { TextArea } from "../../textarea";
 import noPhotoImage from "../../../assets/images/noPhoto.png";
-import { CURRENCY_UNIT } from "../../../constants/price.constants";
+import { validationForm } from "./product-creation-form.validation";
+import { createSubmit, editSubmit } from "./product-creation-form.submit";
 
 type ProductCreationFormProps = {
   formPurpose: FormPurpose;
@@ -48,63 +48,26 @@ export const ProductCreationForm: FC<ProductCreationFormProps> = ({
       return;
     }
     const imageFile = event.target.files[0];
-    console.log(event.target.files);
+
     setFormData({
       ...formData,
       [event.target.id]: URL.createObjectURL(imageFile),
     });
   };
 
-  const editSubmit = (product: ProductModel) => {
-    editProductApi(product);
-    setVisibleModal(false);
-  };
-  const createSubmit = (product: ProductModel) => {
-    createProductApi(product);
-    setVisibleModal(false);
-  };
-  const validationForm = (): boolean => {
-    if (!formData.title) {
-      alert("The title is required to fill out!");
-      return false;
-    }
-    if (!formData.price) {
-      return confirm("The price is 0. Are you sure?");
-    }
-
-    if (formData.price > 999.99) {
-      alert(`The price should be no more than ${CURRENCY_UNIT}999.99!`);
-      return false;
-    }
-
-    if (!Number.isInteger(formData.price * 100)) {
-      alert(`The price is not correct!`);
-      return false;
-    }
-
-    if (formData.price < 0) {
-      alert("The price cannot be less than 0!");
-      return false;
-    }
-
-    return true;
-  };
-
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    if (!validationForm()) return;
+    if (!validationForm(formData)) return;
+
     const newProduct: ProductModel = {
-      id: formData.id,
-      title: formData.title,
+      ...formData,
       price: Number(formData.price),
-      description: formData.description,
-      category: formData.category,
       image: formData.image ? formData.image : "",
-      rating: formData.rating,
     };
 
     if (formPurpose === "create") createSubmit(newProduct);
     if (formPurpose === "edit") editSubmit(newProduct);
+    setVisibleModal(false);
   };
 
   return (

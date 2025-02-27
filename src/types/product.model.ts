@@ -6,4 +6,5 @@ export type ProductModel = {
   category: string;
   image: string;
   rating: { rate: number; count: number };
+  creatorName?: string;
 };

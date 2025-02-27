@@ -52,3 +52,12 @@ export const PriceCard = styled("h3")`
   text-align: right;
   width: 15%;
 `;
+
+export const SettingsContainer = styled("div")`
+  position: absolute;
+  top: 0.5rem;
+  left: 0.5rem;
+  display: flex;
+  justify-content: space-between;
+  // gap: 0.5rem;
+`;

@@ -1,8 +1,9 @@
 import axios, { AxiosResponse } from "axios";
 import { PRODUCTS_URL } from "../constants";
-import { BasketModel, ProductModel } from "../types";
+import { ProductModel } from "../types";
 import {
   addProductActions,
+  removeProductActions,
   addProductInBasket,
   editProductActions,
   removeProductFromBasket,
@@ -21,10 +22,14 @@ export const editProductApi = (product: Partial<ProductModel>) => {
   store.dispatch(editProductActions(product));
 };
 
-export const addBasketApi = (id: BasketModel) => {
+export const removeProductApi = (id: number) => {
+  store.dispatch(removeProductActions(id));
+};
+
+export const addBasketApi = (id: number) => {
   store.dispatch(addProductInBasket(id));
 };
 
-export const removeBasketApi = (id: BasketModel) => {
+export const removeBasketApi = (id: number) => {
   store.dispatch(removeProductFromBasket(id));
 };

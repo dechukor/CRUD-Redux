@@ -1,12 +1,10 @@
 .buttonRemove {
-  position: absolute;
-  top: 1rem;
-  right: 1rem;
   display: flex;
   justify-content: center;
   align-items: center;
   border-radius: 50%;
   padding: 0;
+  background-color: transparent;
 }
 
 .buttonRemove:hover {
