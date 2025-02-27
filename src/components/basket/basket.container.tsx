@@ -3,7 +3,6 @@ import { Modal } from "../product";
 import { useSelector } from "react-redux";
 import { selectBasket } from "../../store/product";
 import { ProductModel } from "../../types";
-
 import { BasketList } from "./basket-list";
 
 type BasketProps = {

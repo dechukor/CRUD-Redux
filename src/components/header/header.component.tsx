@@ -26,11 +26,7 @@ export const Header: FC<HeaderProps> = ({ onOpenBasket }: HeaderProps) => {
     <HeaderContainer>
       <HeaderLogo src={imageLogo} alt="Product shop logo" />
       <ButtonContainer>
-        <ButtonBasket
-          // fill={!!counterInBasket}
-          onClick={onOpenBasket}
-          innerClassName="buttonBasketText"
-        >
+        <ButtonBasket onClick={onOpenBasket} innerClassName="buttonBasketText">
           {counterInBasket ? <BasketFillIcon /> : <BasketEmptyIcon />}
         </ButtonBasket>
         <BasketCounter>{counterInBasket}</BasketCounter>
