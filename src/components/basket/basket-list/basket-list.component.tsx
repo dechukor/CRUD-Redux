@@ -52,7 +52,9 @@ export const BasketList: FC<BasketListProps> = ({
             {cost}
           </TotalCost>
         </SummaryContainer>
-        <Button onClick={handleClearClick}>Clear basket</Button>
+        <Button disabled={!productsInBasket.length} onClick={handleClearClick}>
+          Clear basket
+        </Button>
       </ListFooter>
     </ListContainer>
   );
